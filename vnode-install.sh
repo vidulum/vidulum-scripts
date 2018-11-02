@@ -24,7 +24,7 @@ fi
 
 echo " "
 echo "-----------------------------------------------------------"
-echo "| We will not install the dependencies to run your V-Node |"
+echo "| We will now install the dependencies to run your V-Node |"
 echo "-----------------------------------------------------------"
 sudo apt-get -y install \
       build-essential pkg-config libc6-dev m4 g++-multilib \
