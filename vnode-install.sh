@@ -19,7 +19,7 @@ echo " "
 echo "Will this be a MASTERNODE? (yes or no)"
 read -i "yes" MN
 
-if [ "$MN" == "yes" ]; then
+if [ "$MN" == "yes" ] || [ "$MN" == "y" ]; then
     echo "Please enter your Masternode Private Key GENKEY: "
     read GENKEY
 
@@ -54,7 +54,7 @@ echo "--------------------"
 wget -O .vidulum-params/sprout-proving.key https://gitlab.com/zcashcommunity/params/raw/master/sprout-proving.key
 wget -O .vidulum-params/sprout-verifying.key https://gitlab.com/zcashcommunity/params/raw/master/sprout-verifying.key
 
-if [ "$MN" == "yes" ]; then
+if [ "$MN" == "yes" ] || [ "$MN" == "y" ]; then
     configFile=".vidulum/vidulum.conf"
 
     touch $configFile
