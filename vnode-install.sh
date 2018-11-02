@@ -1,4 +1,10 @@
 #!/usr/bin/env bash
+#
+# Download and Run
+# wget https://raw.githubusercontent.com/vidulum/vidulum-scripts/master/vnode-install.sh
+# chmod u+x vnode-install.sh
+# ./vnode-install.sh
+
 
 echo "    ## Vidulum Node Install Script ##   "
 echo "    #################################   "
