@@ -40,19 +40,91 @@ sudo apt-get -y install \
 
 cd
 
+echo "|--------------------------------------------|" 
+echo "|--------------------------------------------|"
+echo "| Checking if data and params directories    |"
+echo "| exist, if not then they will be created.   |"
+echo "|--------------------------------------------|"
+echo "|--------------------------------------------|" 
 echo " "
-echo "------------------------------------"
-echo "| Making data and params directory |"
-echo "------------------------------------"
+echo " "
+
+if [ -d ~/.vidulum-params ]
+then
+echo "-----------------------------------"
+echo "| Params directory already exists |"
+echo "-----------------------------------"
+
+else
+
+echo "---------------------------"
+echo "| Making params directory |"
+echo "---------------------------"
+
 mkdir .vidulum-params
-mkdir .vidulum
+fi
 
 echo " "
-echo "--------------------"
-echo "| Downloading keys |"
-echo "--------------------"
+
+if [ -d ~/.vidulum ]
+then
+echo "---------------------------------"
+echo "| Data directory already exists |"
+echo " --------------------------------"
+
+else
+ 
+echo "-------------------------"
+echo "| Making data directory |"
+echo "-------------------------"
+
+mkdir .vidulum
+fi
+
+echo " "
+echo " "
+echo "|-------------------------------------|" 
+echo "|-------------------------------------|"
+echo "| Checking if sprout keys exist, if   |"
+echo "| not they will be downloaded now.    |"
+echo "|-------------------------------------|"
+echo "|-------------------------------------|" 
+echo " "
+echo " "
+
+if [ -e ~/.vidulum-params/sprout-proving.key ]
+then
+echo "-------------------------------"
+echo "| Proving key already present |"
+echo "-------------------------------"
+
+else
+
+echo "--------------------------------- "
+echo "| Downloading sprout-proving.key |"
+echo "--------------------------------- "
+
 wget -O .vidulum-params/sprout-proving.key https://gitlab.com/zcashcommunity/params/raw/master/sprout-proving.key
+fi
+
+echo " "
+
+if [ -e ~/.vidulum-params/sprout-verifying.key ]
+then
+echo "---------------------------------"
+echo "| Verifying key already present |"
+echo "---------------------------------"
+
+else
+
+echo "------------------------------------"
+echo "| Downloading sprout-verifying.key |"
+echo "------------------------------------"
+
 wget -O .vidulum-params/sprout-verifying.key https://gitlab.com/zcashcommunity/params/raw/master/sprout-verifying.key
+fi
+
+echo " "
 
 if [ "$MN" == "yes" ] || [ "$MN" == "y" ]; then
     configFile=".vidulum/vidulum.conf"
@@ -73,20 +145,35 @@ if [ "$MN" == "yes" ] || [ "$MN" == "y" ]; then
     echo "masternode=1" >> $configFile
 fi
 
-
 echo " "
-echo "-------------------------------------"
+echo " "
+echo "|-----------------------------------|" 
+echo "|-----------------------------------|"
 echo "| Downloading and unpacking Vidulum |"
-echo "-------------------------------------"
+echo "| binaries if they are not present. |"                  
+echo "|-----------------------------------|"
+echo "|-----------------------------------|" 
+echo " "
+echo " "
+
+if [ -e vidulumd ] && [ -e vidulum-cli ] 
+then
+echo "--------------------------------"
+echo "| Vidulum is already installed |"
+echo "--------------------------------"
+
+else
+
 wget https://github.com/vidulum/vidulum/releases/download/v1.0.0/vidulum-linux64.tar.gz
 tar -xvf vidulum-linux64.tar.gz
+fi
 
 echo " "
-echo "--------------------------------------------"
-echo "| Ok, it looks like everything is complete |"
-echo "|                                          |"
-echo "| Starting your V-Node to sync the chain   |"
-echo "--------------------------------------------"
 echo " "
-echo "type   ./vidulum-cli getinfo    to see sync status"
-./vidulumd
+echo "|------------------------------------------|" 
+echo "|------------------------------------------|"
+echo "| Ok it looks like everything is complete! |"
+echo "| To start the daemon/V-Node type:         |"
+echo " "
+echo " ./vidulumd "
+echo " "

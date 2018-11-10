@@ -5,9 +5,9 @@ Ubuntu 16.04 fresh install
 
 usage
 ```
-wget https://raw.githubusercontent.com/vidulum/vidulum-scripts/master/SCRIPT_NAME
+wget https://raw.githubusercontent.com/vidulum/vidulum-scripts/master/vnode-install.sh
 
-chmod u+x SCRIPT_NAME
+chmod u+x vnode-install.sh
 
-./SCRIPT_NAME.sh
+./vnode-install.sh
 ```
