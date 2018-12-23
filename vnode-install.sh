@@ -40,6 +40,8 @@ sudo apt-get -y install \
 
 cd
 
+echo " "
+echo " "
 echo "|--------------------------------------------|" 
 echo "|--------------------------------------------|"
 echo "| Checking if data and params directories    |"
