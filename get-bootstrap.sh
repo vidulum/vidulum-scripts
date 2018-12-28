@@ -56,10 +56,12 @@ then
 
 cp .vidulum/wallet.dat .
 cp .vidulum/vidulum.conf .
+cp .vidulum/masternode.conf .
 sudo rm -r .vidulum
 mkdir .vidulum
 mv wallet.dat .vidulum/wallet.dat
 mv vidulum.conf .vidulum/vidulum.conf
+mv masternode.conf .vidulum/masternode.conf
 
 echo " "
 echo " "
