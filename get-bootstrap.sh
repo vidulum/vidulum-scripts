@@ -83,21 +83,27 @@ curl https://transfer.sh/9RGub/vdl_bootstrap.tar.gz -o vdl_bootstrap.tar.gz
 #Decompress
 echo " "
 echo " "
-echo "---------------------------------------------------"
-echo "| Pulling all of the needles out of the hay stack |"
-echo "---------------------------------------------------"
+echo "-------------------------------------------------------"
+echo "| Pulling all of the needles out of the new hay stack |"
+echo "-------------------------------------------------------"
 tar -xzf vdl_bootstrap.tar.gz
 
 
 #Move everything to the Vidulum datadir
 echo " "
 echo " "
-echo "------------------------------------------"
-echo "| Putting new needles into the hay stack |"
-echo "------------------------------------------"
+echo "----------------------------------------------"
+echo "| Putting new needles into the new hay stack |"
+echo "----------------------------------------------"
 mv bootstrap/blocks ~/.vidulum/blocks
 mv bootstrap/chainstate ~/.vidulum/chainstate
 mv bootstrap/peers.dat ~/.vidulum/peers.dat
+
+#Clean up
+echo " "
+echo " "
+echo " Removing the hay stack "
+rm vdl_bootstrap.tar.gz
 
 
 #Run the wallet and allow it to finish sync
