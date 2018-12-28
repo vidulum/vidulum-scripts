@@ -1,7 +1,10 @@
 #!/bin/bash
 
-#
-#
+# Download and Run
+# wget https://raw.githubusercontent.com/vidulum/vidulum-scripts/master/get-bootstrap.sh
+# chmod u+x get-bootstrap.sh
+# ./get-bootstrap.sh
+
 ###################################
 ## Grab latest vidulum bootstrap ##
 ###################################
