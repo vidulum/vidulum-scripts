@@ -29,8 +29,8 @@ mv vidulum-release/vidulum-cli .
 
 ./vidulumd -daemon=1
 
-echo "napping again"
-sleep 5
+echo "napping again 10s"
+sleep 10
 
 echo " "
 echo " "
