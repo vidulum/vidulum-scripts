@@ -28,6 +28,11 @@ mv vidulum-release/vidulumd .
 mv vidulum-release/vidulum-cli .
 
 ./vidulumd -daemon=1
+
+echo "napping again"
+sleep 5
+
 echo " "
 echo " "
-echo "See what was easy!  ./vidulum-cli getinfo "
+echo "The next line should be  protocolversion:  170007"
+./vidulum-cli getnetworkinfo | grep -i 'protocolversion'
