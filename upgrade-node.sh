@@ -41,5 +41,8 @@ sleep 10
 
 echo " "
 echo " "
-echo "The next line should be  protocolversion:  170007"
-./vidulum-cli getnetworkinfo | grep -i 'protocolversion'
+
+#Trying too hard
+#echo "The next line should be  protocolversion:  170007"
+#./vidulum-cli getnetworkinfo | grep -i 'protocolversion'
+echo "Done"
