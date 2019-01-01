@@ -1,3 +1,10 @@
+#!/bin/bash
+
+# Download and Run
+# wget https://raw.githubusercontent.com/vidulum/vidulum-scripts/master/upgrade-node.sh
+# chmod u+x upgrade-node.sh
+# ./upgrade-node.sh
+
 #Upgrade Node to current release
 
 echo " "
