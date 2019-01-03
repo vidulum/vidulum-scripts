@@ -169,6 +169,8 @@ else
 wget https://github.com/vidulum/vidulum/releases/download/v1.0.1/vidulum-linux64.tar.gz
 tar -xvf vidulum-linux64.tar.gz
 rm vidulum-linux64.tar.gz
+cp vidulum-release/vidulumd.
+cp vidulum-release/vidulum-cli.
 fi
 
 echo " "
