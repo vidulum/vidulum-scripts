@@ -32,10 +32,11 @@ echo " "
 echo "-----------------------------------------------------------"
 echo "| We will now install the dependencies to run your V-Node |"
 echo "-----------------------------------------------------------"
+apt-get update
 sudo apt-get -y install \
       build-essential pkg-config libc6-dev m4 g++-multilib \
       autoconf libtool ncurses-dev unzip git python python-zmq \
-      zlib1g-dev wget bsdmainutils automake curl
+      zlib1g-dev wget bsdmainutils automake curl libgomp1
 
 
 cd
