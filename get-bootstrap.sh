@@ -79,7 +79,7 @@ echo "-----------------------------------------"
 echo "| Downloading current Vidulum bootstrap |"
 echo "-----------------------------------------"
 
-curl https://transfer.sh/Ub8iu/vdl_bootstrap.tar.gz -o vdl_bootstrap.tar.gz
+curl https://transfer.sh/o4dwA/vdl_bootstrap.tar.gz -o vdl_bootstrap.tar.gz
 
 
 #Decompress
