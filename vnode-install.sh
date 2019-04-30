@@ -5,7 +5,7 @@
 # chmod u+x vnode-install.sh
 # ./vnode-install.sh
 
-
+echo "    #################################   "
 echo "    ## Vidulum Node Install Script ##   "
 echo "    #################################   "
 echo " "
@@ -54,9 +54,9 @@ echo " "
 
 if [ -d ~/.vidulum-params ]
 then
-echo "-----------------------------------"
-echo "| Params directory already exists |"
-echo "-----------------------------------"
+echo "------------------------------------"
+echo "| Params directory already exists! |"
+echo "------------------------------------"
 
 else
 
@@ -71,9 +71,9 @@ echo " "
 
 if [ -d ~/.vidulum ]
 then
-echo "---------------------------------"
-echo "| Data directory already exists |"
-echo " --------------------------------"
+echo "----------------------------------"
+echo "| Data directory already exists! |"
+echo " ---------------------------------"
 
 else
  
@@ -97,15 +97,15 @@ echo " "
 
 if [ -e ~/.vidulum-params/sprout-proving.key ]
 then
-echo "-------------------------------"
-echo "| Proving key already present |"
-echo "-------------------------------"
+echo "--------------------------------"
+echo "| Proving key already present! |"
+echo "--------------------------------"
 
 else
 
-echo "--------------------------------- "
+echo "----------------------------------"
 echo "| Downloading sprout-proving.key |"
-echo "--------------------------------- "
+echo "----------------------------------"
 
 wget -O .vidulum-params/sprout-proving.key https://z.cash/downloads/sprout-proving.key
 fi
@@ -114,9 +114,9 @@ echo " "
 
 if [ -e ~/.vidulum-params/sprout-verifying.key ]
 then
-echo "---------------------------------"
-echo "| Verifying key already present |"
-echo "---------------------------------"
+echo "----------------------------------"
+echo "| Verifying key already present! |"
+echo "----------------------------------"
 
 else
 
@@ -161,9 +161,9 @@ echo " "
 
 if [ -e vidulumd ] && [ -e vidulum-cli ] 
 then
-echo "--------------------------------"
-echo "| Vidulum is already installed |"
-echo "--------------------------------"
+echo "---------------------------------"
+echo "| Vidulum is already installed! |"
+echo "---------------------------------"
 
 else
 
@@ -175,13 +175,20 @@ cp vidulum-release/vidulum-cli .
 fi
 
 echo " "
-echo " "
-echo "|------------------------------------------|" 
+echo " " 
 echo "|------------------------------------------|"
 echo "| Ok, it looks like everything is complete!|"
 echo "| The daemon is running in the background. |"
-echo "| To check on its status, type:            |"           
+echo "| To check on syncing status, type:        |"           
 echo "| ./vidulum-cli getinfo                    |"
+echo "|                                          |"
+echo "| When syncing is complete, start the      |"
+echo "| mastenode from the GUI wallet, then type:|"                   
+echo "| ./vidulum-cli masternodedebug            |"
+echo "|                                          |"
+echo "| If V-Node has been successfully started  |"
+echo "| the output will state:                   |"
+echo "| Masternode successfully started          |"
 echo "|------------------------------------------|"
 echo " "
 ./vidulumd -daemon
