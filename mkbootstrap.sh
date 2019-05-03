@@ -3,11 +3,11 @@
 
 ## Create vidulum bootstrap ##
 
-#drop to base dir
+#drop to root dir
 cd ~
 
 
-#if folder exists delete it
+#if bootstrap exists delete it
 if [ -d ~/bootstrap ]
 
 then
@@ -17,10 +17,9 @@ sudo rm -r bootstrap
 fi
 
 
-#make a folder and slide into it
 mkdir bootstrap && cd bootstrap
 
-#use the kodak scanner to copy some stuff
+
 cp -r ~/.vidulum/blocks .
 cp -r ~/.vidulum/chainstate .
 cp ~/.vidulum/peers.dat .
@@ -30,10 +29,9 @@ cp ~/.vidulum/peers.dat .
 #concatenate block data into bootstrap.dat
 #cat blk* > bootstrap.dat
 
-#Drop it like its hot
 cd ~
 
-#Compress the hay stack
+#compress
 tar -czvf vdl_bootstrap.tar.gz bootstrap
 
 
