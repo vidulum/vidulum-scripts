@@ -24,11 +24,6 @@ cp -r ~/.vidulum/blocks .
 cp -r ~/.vidulum/chainstate .
 cp ~/.vidulum/peers.dat .
 
-
-###REMOVE FOR NOW
-#concatenate block data into bootstrap.dat
-#cat blk* > bootstrap.dat
-
 cd ~
 
 #compress
