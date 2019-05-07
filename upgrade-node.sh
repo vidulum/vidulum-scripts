@@ -25,14 +25,14 @@ rm vidulumd
 rm vidulum-cli
 
 echo " "
-wget -q --show-progress https://github.com/vidulum/vidulum/releases/download/v1.0.1/vidulum-linux64.tar.gz
+wget -q --show-progress https://github.com/vidulum/vidulum/releases/download/v1.0.1/vidulum-linux64.zip
 
 echo " "
-tar -xzf vidulum-linux64.tar.gz
+unzip vidulum-linux64.zip
 
-rm vidulum-linux64.tar.gz
-mv vidulum-release/vidulumd .
-mv vidulum-release/vidulum-cli .
+rm vidulum-linux64.zip
+#mv vidulum-release/vidulumd .
+#mv vidulum-release/vidulum-cli .
 
 ./vidulumd -daemon=1
 
