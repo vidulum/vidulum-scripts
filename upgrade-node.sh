@@ -31,6 +31,9 @@ echo " "
 unzip vidulum-linux64.zip
 
 rm vidulum-linux64.zip
+
+chmod u+x vidulum-cli
+chmod u+x vidulumd
 #mv vidulum-release/vidulumd .
 #mv vidulum-release/vidulum-cli .
 
