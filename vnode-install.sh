@@ -9,9 +9,11 @@ echo "    ##########################################   "
 echo "    ## Downloading and installing bootstrap ##   "
 echo "    ##########################################   "
 #
-wget https://github.com/vidulum/vidulum/releases/download/v1.0.1/vdl_boostrap.zip
+apt-get install -y unzip
 #
-unzip vdl_boostrap.zip
+wget https://github.com/vidulum/vidulum/releases/download/v1.0.1/vdl_bootstrap.zip
+#
+unzip vdl_bootstrap.zip
 #
 #
 echo " "
@@ -69,15 +71,15 @@ else
         echo "Data directory ready and bootstrap is installed!"
 fi
 # Move Blocks into data directory
-cd boostrap
+cd bootstrap
 mv blocks ~/.vidulum/blocks
 mv chainstate ~/.vidulum/chainstate
 mv peers.dat ~/.vidulum/peers.dat
 #
 cd ~
 # Cleanup
-rm -rf boostrap
-rm vdl_boostrap.zip
+rm -rf bootstrap
+rm vdl_bootstrap.zip
 #
 echo " "
 echo "    #################################   "
