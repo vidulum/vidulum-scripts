@@ -69,14 +69,14 @@ else
         echo "Data directory ready and bootstrap is installed!"
 fi
 # Move Blocks into data directory
-cd bootstrap
+cd boostrap
 mv blocks ~/.vidulum/blocks
 mv chainstate ~/.vidulum/chainstate
 mv peers.dat ~/.vidulum/peers.dat
 #
 cd ~
 # Cleanup
-rm -rf bootstrap
+rm -rf boostrap
 rm vdl_boostrap.zip
 #
 echo " "
