@@ -5,9 +5,9 @@
 # chmod u+x vnode-install.sh
 # ./vnode-install.sh
 #
-echo "    #########################################   "
-echo "    ## Downloading and installing bootsrap ##   "
-echo "    #########################################   "
+echo "    ##########################################   "
+echo "    ## Downloading and installing bootstrap ##   "
+echo "    ##########################################   "
 #
 wget https://github.com/vidulum/vidulum/releases/download/v1.0.1/vdl_boostrap.zip
 #
