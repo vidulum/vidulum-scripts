@@ -20,7 +20,7 @@ echo " "
 echo "Will this be a MASTERNODE? (yes or no)"
 read -i "yes" MN
 
-if [ "$MN" == "yes" ] || [ "$MN" == "y" ]; then
+if [[ $MN =~ [yY](es)* ]]; then
     echo "Please enter your Masternode Private Key GENKEY: "
     read GENKEY
 
@@ -31,16 +31,16 @@ fi
 echo "Would you like to download a bootstrap? (yes or no)"
 read -i "yes" BS 
 
-if [ "$MN" == "yes" ] || [ "$MN" == "y" ] && [ "$BS" == "yes" ] || [ "$BS" == "y" ]; then
+if [[ $MN =~ [yY](es)* ]] && [[ $BS =~ [yY](es)* ]]; then
         echo " "
 	echo "Downloading Bootstrap for V-Node"
         echo " " 
 	wget https://github.com/vidulum/vidulum/releases/download/v1.0.1/vdl_bootstrap_vnode.zip
-elif [ "$MN" == "yes" ] || [ "$MN" == "y" ] && [ "$BS" == "no" ] || [ "$BS" == "n" ]; then
+elif [[ $MN =~ [yY](es)* ]] && [[ $BS =~ [nN](o)* ]]; then
         echo " "
 	echo "Not Downloading Bootstrap, moving on with V-Node Configuration"
         echo " "
-elif [ "$MN" == "no" ] || [ "$MN" == "n" ] && [ "$BS" == "yes" ] || [ "$BS" == "y" ]; then
+elif [[ $MN =~ [nN](o)* ]] && [[ $BS =~ [yY](es)* ]]; then
         echo " "	
 	echo "Downloading Bootstrap for regular node"
         echo " "
@@ -222,7 +222,7 @@ fi
 
 echo " "
 
-if [ "$MN" == "yes" ] || [ "$MN" == "y" ]; then
+if [[ $MN =~ [yY](es)* ]]; then
     configFile=".vidulum/vidulum.conf"
 
     touch $configFile
