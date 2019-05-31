@@ -5,82 +5,6 @@
 # chmod u+x vnode-install.sh
 # ./vnode-install.sh
 #
-# echo "    ##########################################   "
-# echo "    ## Downloading and installing bootstrap ##   "
-# echo "    ##########################################   "
-# #
-# apt-get install -y unzip
-# #
-# wget https://github.com/vidulum/vidulum/releases/download/v1.0.1/vdl_bootstrap.zip
-# #
-# unzip vdl_bootstrap.zip
-# #
-# #
-# echo " "
-# echo "----------------------------------------------"
-# echo "| The script will check for important config |"
-# echo "| files and back them up in your home folder |"
-# echo "| temporaily while the rest of .vidulum      |"                          
-# echo "| is deleted so the bootstrap works as it    |"
-# echo "| should, and then they are moved back after |"
-# echo "| the bootstrap files are done installing    |"
-# echo "| Specifically;                              |"  
-# echo "| wallet.dat, vidulum.conf, masternode.conf  |"
-# echo "----------------------------------------------"
-# echo " "
-# #
-# if [ -e ~/.vidulum/wallet.dat ]; then
-#         cp .vidulum/wallet.dat .
-# else
-#         echo "No wallet.dat file found"
-# fi
-# if [ -e ~/.vidulum/vidulum.conf ]; then
-#         cp .vidulum/vidulum.conf .
-# else
-#         echo "No vidulum.conf file found"
-# fi
-# if [ -e ~/.vidulum/masternode.conf ]; then
-#         cp .vidulum/masternode.conf .
-# else
-#         echo "No masternode.conf found"
-# fi
-# if [ -d ~/.vidulum ]; then
-#         rm -rf .vidulum
-# fi
-# #
-# mkdir .vidulum
-# #
-# if [ -e ~/wallet.dat ]; then
-#         mv wallet.dat .vidulum/wallet.dat
-# else
-#         echo "No wallet.dat to backup"
-# fi
-# if [ -e ~/vidulum.conf ]; then
-#         mv vidulum.conf .vidulum/vidulum.conf
-# else
-#         echo "No vidulum.conf to backup"
-# fi
-# if [ -e ~/masternode.conf ]; then
-#         mv masternode.conf .vidulum/masternode.conf
-# else
-#         echo "No masternode.conf to backup"
-# fi
-# if [ ! -d ~/.vidulum ]; then
-#         mkdir .vidulum
-# else
-#         echo "Data directory ready and bootstrap is installed!"
-# fi
-# # Move Blocks into data directory
-# cd bootstrap
-# mv blocks ~/.vidulum/blocks
-# mv chainstate ~/.vidulum/chainstate
-# mv peers.dat ~/.vidulum/peers.dat
-# #
-# cd ~
-# # Cleanup
-# rm -rf bootstrap
-# rm vdl_bootstrap.zip
-#
 echo " "
 echo "    #################################   "
 echo "    ## Vidulum Node Install Script ##   "
@@ -104,29 +28,142 @@ if [ "$MN" == "yes" ] || [ "$MN" == "y" ]; then
     read VPSIP
 fi
 
+echo "Would you like to download a bootstrap? (yes or no)"
+read -i "yes" BS 
+
+if [ "$MN" == "yes" ] || [ "$MN" == "y" ] && [ "$BS" == "yes" ] || [ "$BS" == "y" ]; then
+        echo " "
+	echo "Downloading Bootstrap for V-Node"
+        echo " " 
+	wget https://github.com/vidulum/vidulum/releases/download/v1.0.1/vdl_bootstrap_vnode.zip
+elif [ "$MN" == "yes" ] || [ "$MN" == "y" ] && [ "$BS" == "no" ] || [ "$BS" == "n" ]; then
+        echo " "
+	echo "Not Downloading Bootstrap, moving on with V-Node Configuration"
+        echo " "
+elif [ "$MN" == "no" ] || [ "$MN" == "n" ] && [ "$BS" == "yes" ] || [ "$BS" == "y" ]; then
+        echo " "	
+	echo "Downloading Bootstrap for regular node"
+        echo " "
+	wget https://github.com/vidulum/vidulum/releases/download/v1.0.1/vdl_bootstrap.zip
+else
+        echo " "
+	echo "Not Downloading Bootstrap, moving on with setup of regular node"
+        echo " "
+fi
+
 
 echo " "
 echo "-----------------------------------------------------------"
 echo "| We will now install the dependencies to run your V-Node |"
 echo "-----------------------------------------------------------"
+echo " "
 apt-get update
 sudo apt-get -y install \
       build-essential pkg-config libc6-dev m4 g++-multilib \
       autoconf libtool ncurses-dev unzip git python python-zmq \
       zlib1g-dev wget bsdmainutils automake curl libgomp1
 
+echo " "
+echo "   ##########################   "
+echo "   ## Installing bootstrap ##   "
+echo "   ##########################   "
+echo " "
 
-cd
+if [ -e ~/vdl_bootstrap_vnode.zip ]; then
+        echo " "
+	echo "Upacking V-Node Bootstrap"
+        echo " "
+	unzip vdl_bootstrap_vnode.zip
+elif [ -e ~/vdl_bootstrap.zip ]; then
+        echo " "
+	echo "Upacking regular Bootstrap"
+        echo " "
+	unzip vdl_bootstrap.zip
+else 
+        echo " "
+	echo "Not installing Bootstrap"
+        echo " "
+fi
 
 echo " "
+echo "----------------------------------------------"
+echo "| The script will check for important config |"
+echo "| files and back them up in your home folder |"
+echo "| temporaily while the rest of .vidulum      |"                          
+echo "| is deleted so the bootstrap works as it    |"
+echo "| should, and then they are moved back after |"
+echo "| the bootstrap files are done installing    |"
+echo "| Specifically;                              |"  
+echo "| wallet.dat, vidulum.conf, masternode.conf  |"
+echo "----------------------------------------------"
 echo " "
-echo "|--------------------------------------------|"
+
+if [ -e ~/.vidulum/wallet.dat ]; then
+    cp .vidulum/wallet.dat .
+ else
+    echo "No wallet.dat file to backup"
+fi
+if [ -e ~/.vidulum/vidulum.conf ]; then
+    cp .vidulum/vidulum.conf .
+else
+    echo "No vidulum.conf file to backup"
+fi
+if [ -e ~/.vidulum/masternode.conf ]; then
+    cp .vidulum/masternode.conf .
+else
+    echo "No masternode.conf file to backup"
+fi
+if [ -d ~/.vidulum ]; then
+    rm -rf .vidulum
+fi
+
+mkdir .vidulum
+
+if [ -e ~/wallet.dat ]; then
+    mv wallet.dat .vidulum/wallet.dat
+else
+    echo "No wallet.dat to move back"
+fi
+if [ -e ~/vidulum.conf ]; then
+    mv vidulum.conf .vidulum/vidulum.conf
+else
+    echo "No vidulum.conf to move back"
+fi
+if [ -e ~/masternode.conf ]; then
+    mv masternode.conf .vidulum/masternode.conf
+else
+    echo "No masternode.conf to move back"
+fi
+if [ ! -d ~/.vidulum ]; then
+    mkdir .vidulum
+else
+    echo "Data directory ready and bootstrap is finishing installing!"
+fi
+
+# Move Blocks into data directory
+if [ -d ~/bootstrap ]; then
+cd bootstrap
+mv blocks ~/.vidulum/blocks
+mv chainstate ~/.vidulum/chainstate
+mv peers.dat ~/.vidulum/peers.dat
+else
+    echo "No bootstrap files to install"
+fi
+# 
+cd ~
+# Cleanup
+if [ -d ~/bootstrap ]; then
+rm -rf bootstrap
+rm vdl_bootstrap*
+else
+    echo "Nothing to cleanup"
+fi
+#
+echo " "
 echo "|--------------------------------------------|"
 echo "| Checking if vidulum-params directory       |"
 echo "| exists, if not then it will be created.    |"
 echo "|--------------------------------------------|"
-echo "|--------------------------------------------|"
-echo " "
 echo " "
 
 if [ -d ~/.vidulum-params ]
@@ -145,14 +182,10 @@ mkdir .vidulum-params
 fi
 
 echo " "
-echo " "
-echo "|-------------------------------------|"
 echo "|-------------------------------------|"
 echo "| Checking if sprout keys exist, if   |"
 echo "| not they will be downloaded now.    |"
 echo "|-------------------------------------|"
-echo "|-------------------------------------|"
-echo " "
 echo " "
 
 if [ -e ~/.vidulum-params/sprout-proving.key ]
@@ -208,15 +241,12 @@ if [ "$MN" == "yes" ] || [ "$MN" == "y" ]; then
     echo "masternode=1" >> $configFile
 fi
 
+
 echo " "
-echo " "
-echo "|-----------------------------------|"
 echo "|-----------------------------------|"
 echo "| Downloading and unpacking Vidulum |"
 echo "| binaries if they are not present. |"
 echo "|-----------------------------------|"
-echo "|-----------------------------------|"
-echo " "
 echo " "
 
 if [ -e vidulumd ] && [ -e vidulum-cli ]
@@ -233,8 +263,7 @@ rm vidulum-linux64.zip
 
 chmod u+x vidulum-cli
 chmod u+x vidulumd
-#cp vidulum-release/vidulumd .
-#cp vidulum-release/vidulum-cli .
+
 fi
 
 echo " "
