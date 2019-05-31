@@ -47,7 +47,7 @@ elif [ "$MN" == "no" ] || [ "$MN" == "n" ] && [ "$BS" == "yes" ] || [ "$BS" == "
 	wget https://github.com/vidulum/vidulum/releases/download/v1.0.1/vdl_bootstrap.zip
 else
         echo " "
-	echo "Not Downloading Bootstrap, moving on with setup of regular node"
+	echo "Not Downloading Bootstrap, moving on with setup node"
         echo " "
 fi
 
