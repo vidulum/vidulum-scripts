@@ -15,7 +15,6 @@ echo "| We will help you setup your V-Node   |"
 echo "| This script will use Vidulum Release |"
 echo "----------------------------------------"
 echo " "
-echo " "
 
 echo "Will this be a MASTERNODE? (yes or no)"
 read -i "yes" MN
@@ -50,7 +49,6 @@ else
 	echo "Not Downloading Bootstrap, moving on with node setup"
         echo " "
 fi
-
 
 echo " "
 echo "-----------------------------------------------------------"
