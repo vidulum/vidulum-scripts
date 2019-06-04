@@ -59,7 +59,7 @@ apt-get update
 sudo apt-get -y install \
       build-essential pkg-config libc6-dev m4 g++-multilib \
       autoconf libtool ncurses-dev unzip git python python-zmq \
-      zlib1g-dev wget bsdmainutils automake curl libgomp1
+      zlib1g-dev wget bsdmainutils automake curl libgomp1 unzip
 
 echo " "
 echo "   ##########################   "
