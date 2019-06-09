@@ -67,7 +67,7 @@ echo "   ## Installing bootstrap ##   "
 echo "   ##########################   "
 echo " "
 
-if [ -d ~/VDL-bootstrap.zip ]; then
+if [ -f ~/VDL-bootstrap.zip ]; then
         echo " "
 	echo "Upacking Bootstrap"
         echo " "
@@ -144,7 +144,7 @@ fi
 # 
 cd ~
 # Cleanup
-if [ -d ~/VDL-bootstrap.zip ]; then
+if [ -f ~/VDL-bootstrap.zip ]; then
 rm VDL-bootstrap.zip
 else
     echo "Nothing to cleanup"
@@ -230,6 +230,22 @@ if [[ $MN =~ [yY](es)* ]]; then
     echo "externalip="$VPSIP":7676" >> $configFile
     echo "masternodeprivkey="$GENKEY >> $configFile
     echo "masternode=1" >> $configFile
+
+elif [[ $MN =~ [nN](o)* ]]; then
+	configFile=".vidulum/vidulum.conf"
+
+	touch $configFile
+
+    rpcuser=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
+    echo "rpcuser="$rpcuser >> $configFile
+    rpcpassword=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
+    echo "rpcpassword="$rpcpassword >> $configFile
+    echo "listen=1" >> $configFile
+    echo "server=1" >> $configFile
+    echo "txindex=1" >> $configFile
+
+else 
+	echo "Vidulum.conf must be configured - stopping script" && exit 1
 fi
 
 
