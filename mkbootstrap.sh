@@ -27,8 +27,8 @@ cp ~/.vidulum/peers.dat .
 cd ~
 
 #compress
-tar -czvf vdl_bootstrap.tar.gz bootstrap
+zip vdl_bootstrap.zip bootstrap
 
 
 #upload file to hosting service (transfer.sh good for 14 days)
-curl --upload-file ./vdl_bootstrap.tar.gz https://transfer.sh/vdl_bootstrap.tar.gz
+#curl --upload-file ./vdl_bootstrap.tar.gz https://transfer.sh/vdl_bootstrap.tar.gz

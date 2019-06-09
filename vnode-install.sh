@@ -34,7 +34,7 @@ if [[ $MN =~ [yY](es)* ]] && [[ $BS =~ [yY](es)* ]]; then
         echo " "
 	echo "Downloading Bootstrap for V-Node"
         echo " " 
-	wget https://github.com/vidulum/vidulum/releases/download/v1.0.1/vdl_bootstrap_vnode.zip
+	wget https://downloads.vidulum.app/vidulum/VDL-bootstrap.zip
 elif [[ $MN =~ [yY](es)* ]] && [[ $BS =~ [nN](o)* ]]; then
         echo " "
 	echo "Not Downloading Bootstrap, moving on with V-Node Configuration"
@@ -43,7 +43,7 @@ elif [[ $MN =~ [nN](o)* ]] && [[ $BS =~ [yY](es)* ]]; then
         echo " "	
 	echo "Downloading Bootstrap for regular node"
         echo " "
-	wget https://github.com/vidulum/vidulum/releases/download/v1.0.1/vdl_bootstrap.zip
+	wget https://downloads.vidulum.app/vidulum/VDL-bootstrap.zip
 else
         echo " "
 	echo "Not Downloading Bootstrap, moving on with node setup"
@@ -67,16 +67,11 @@ echo "   ## Installing bootstrap ##   "
 echo "   ##########################   "
 echo " "
 
-if [ -e ~/vdl_bootstrap_vnode.zip ]; then
+if [ -d ~/VDL-bootstrap.zip ]; then
         echo " "
-	echo "Upacking V-Node Bootstrap"
+	echo "Upacking Bootstrap"
         echo " "
-	unzip vdl_bootstrap_vnode.zip
-elif [ -e ~/vdl_bootstrap.zip ]; then
-        echo " "
-	echo "Upacking regular Bootstrap"
-        echo " "
-	unzip vdl_bootstrap.zip
+	unzip VDL-bootstrap.zip
 else 
         echo " "
 	echo "Not installing Bootstrap"
@@ -139,8 +134,7 @@ else
 fi
 
 # Move Blocks into data directory
-if [ -d ~/bootstrap ]; then
-cd bootstrap
+if [ -d ~/blocks ] && [ -d ~/chainstate ] && [ -e ~/peers.dat ]; then
 mv blocks ~/.vidulum/blocks
 mv chainstate ~/.vidulum/chainstate
 mv peers.dat ~/.vidulum/peers.dat
@@ -150,9 +144,8 @@ fi
 # 
 cd ~
 # Cleanup
-if [ -d ~/bootstrap ]; then
-rm -rf bootstrap
-rm vdl_bootstrap*
+if [ -d ~/VDL-bootstrap.zip ]; then
+rm VDL-bootstrap.zip
 else
     echo "Nothing to cleanup"
 fi
