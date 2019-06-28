@@ -240,9 +240,7 @@ elif [[ $MN =~ [nN](o)* ]]; then
     echo "rpcuser="$rpcuser >> $configFile
     rpcpassword=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
     echo "rpcpassword="$rpcpassword >> $configFile
-    echo "listen=1" >> $configFile
-    echo "server=1" >> $configFile
-    echo "txindex=1" >> $configFile
+    echo "txindex=0" >> $configFile
 
 else 
 	echo "Vidulum.conf must be configured - stopping script" && exit 1
