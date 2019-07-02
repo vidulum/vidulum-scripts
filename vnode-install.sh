@@ -199,7 +199,7 @@ echo "----------------------------------"
 echo "| Downloading sprout-proving.key |"
 echo "----------------------------------"
 
-wget -O .vidulum-params/sprout-proving.key https://z.cash/downloads/sprout-proving.key
+wget -O .vidulum-params/sprout-proving.key https://downloads.vidulum.app/vidulum/sprout-proving.key 
 fi
 
 echo " "
@@ -216,8 +216,9 @@ echo "------------------------------------"
 echo "| Downloading sprout-verifying.key |"
 echo "------------------------------------"
 
-wget -O .vidulum-params/sprout-verifying.key https://z.cash/downloads/sprout-verifying.key
-fi
+wget -O .vidulum-params/sprout-verifying.key https://downloads.vidulum.app/vidulum/sprout-verifying.key 
+
+fi 
 
 echo " "
 
