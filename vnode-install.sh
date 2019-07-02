@@ -32,9 +32,9 @@ read -i "yes" BS
 
 if [[ $MN =~ [yY](es)* ]] && [[ $BS =~ [yY](es)* ]]; then
         echo " "
-	echo "Downloading Bootstrap for V-Node"
+	echo "Downloading Bootstrap for a V-Node"
         echo " " 
-	wget https://downloads.vidulum.app/vidulum/VDL-bootstrap.zip
+	wget https://downloads.vidulum.app/vidulum/VDL-vnode_bootstrap.zip
 elif [[ $MN =~ [yY](es)* ]] && [[ $BS =~ [nN](o)* ]]; then
         echo " "
 	echo "Not Downloading Bootstrap, moving on with V-Node Configuration"
@@ -43,16 +43,16 @@ elif [[ $MN =~ [nN](o)* ]] && [[ $BS =~ [yY](es)* ]]; then
         echo " "	
 	echo "Downloading Bootstrap for regular node"
         echo " "
-	wget https://downloads.vidulum.app/vidulum/VDL-bootstrap.zip
+	wget https://bootstrap.vidulum.app/bstrap/VDL-bootstrap.zip
 else
         echo " "
-	echo "Not Downloading Bootstrap, moving on with node setup"
+	echo "Not Downloading Bootstrap, moving on with the node setup"
         echo " "
 fi
 
 echo " "
 echo "-----------------------------------------------------------"
-echo "| We will now install the dependencies to run your V-Node |"
+echo "| We will now install the dependencies to run your node   |"
 echo "-----------------------------------------------------------"
 echo " "
 apt-get update
@@ -67,15 +67,22 @@ echo "   ## Installing bootstrap ##   "
 echo "   ##########################   "
 echo " "
 
-if [ -f ~/VDL-bootstrap.zip ]; then
-        echo " "
-	echo "Upacking Bootstrap"
-        echo " "
-	unzip VDL-bootstrap.zip
-else 
-        echo " "
-	echo "Not installing Bootstrap"
-        echo " "
+if [ -f ~/VDL-vnode_bootstrap.zip ]; then
+    echo " "
+	echo "Upacking V-Node Bootstrap"
+    echo " "
+
+    unzip VDL-vnode_bootstrap.zip
+
+elif [ -f ~/VDL-bootstrap.zip ]; then 
+    echo " "
+    echo"Unpacking bootstrap"         
+    echo " "
+  
+    unzip VDL-bootstrap.zip
+else
+	echo "Nothing to upack, moving forward"
+    echo " "
 fi
 
 echo " "
@@ -130,7 +137,7 @@ fi
 if [ ! -d ~/.vidulum ]; then
     mkdir .vidulum
 else
-    echo "Data directory ready and bootstrap is finishing installing!"
+    echo "Data directory is already prepared!"
 fi
 
 # Move Blocks into data directory
@@ -144,8 +151,8 @@ fi
 # 
 cd ~
 # Cleanup
-if [ -f ~/VDL-bootstrap.zip ]; then
-rm VDL-bootstrap.zip
+if [ -f ~/VDL-vnode_bootstrap.zip ] || [ -f ~/VDL-bootstrap.zip ]; then
+rm -rf VDL-*.zip
 else
     echo "Nothing to cleanup"
 fi
@@ -236,16 +243,10 @@ elif [[ $MN =~ [nN](o)* ]]; then
 
 	touch $configFile
 
-    rpcuser=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
-    echo "rpcuser="$rpcuser >> $configFile
-    rpcpassword=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
-    echo "rpcpassword="$rpcpassword >> $configFile
-    echo "txindex=0" >> $configFile
-
+	echo "daemon=1" >> $configFile
 else 
-	echo "Vidulum.conf must be configured - stopping script" && exit 1
+	echo "Vidulum.conf must be configured properly - stopping script" && exit 1
 fi
-
 
 echo " "
 echo "|-----------------------------------|"
@@ -263,8 +264,10 @@ echo "---------------------------------"
 else
 
 wget https://github.com/vidulum/vidulum/releases/download/v1.0.1/vidulum-linux64.zip
+
 unzip vidulum-linux64.zip
-rm vidulum-linux64.zip
+
+rm -rf vidulum-linux64.zip
 
 chmod u+x vidulum-cli
 chmod u+x vidulumd
