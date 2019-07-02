@@ -10,10 +10,10 @@ echo "    #################################   "
 echo "    ## Vidulum Node Install Script ##   "
 echo "    #################################   "
 echo " "
-echo "----------------------------------------"
-echo "| We will help you setup your V-Node   |"
-echo "| This script will use Vidulum Release |"
-echo "----------------------------------------"
+echo "-------------------------------------------"
+echo "| We will help you setup your V-Node      |"
+echo "| This script will use the latest release |"
+echo "-------------------------------------------"
 echo " "
 
 echo "Will this be a MASTERNODE? (yes or no)"
@@ -76,11 +76,12 @@ if [ -f ~/VDL-vnode_bootstrap.zip ]; then
 
 elif [ -f ~/VDL-bootstrap.zip ]; then 
     echo " "
-    echo"Unpacking bootstrap"         
+    echo "Unpacking bootstrap"         
     echo " "
   
     unzip VDL-bootstrap.zip
 else
+	echo " "
 	echo "Nothing to upack, moving forward"
     echo " "
 fi
