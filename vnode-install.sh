@@ -216,9 +216,41 @@ echo "------------------------------------"
 echo "| Downloading sprout-verifying.key |"
 echo "------------------------------------"
 
-wget -O .vidulum-params/sprout-verifying.key https://downloads.vidulum.app/vidulum/sprout-verifying.key 
+wget -O .vidulum-params/sprout-verifying.key https://downloads.vidulum.app/vidulum/sprout-verifying.key
+fi
 
-fi 
+echo " "
+
+if [ -e ~/.vidulum-params/sprout-groth16.params ]
+then
+echo "Groth 16 Sapling params already present!"
+else
+echo "Downloading Groth16 Sapling params"
+
+wget -O .vidulum-params/sprout-groth16.params https://downloads.vidulum.app/vidulum/sprout-groth16.params
+fi
+
+echo " "
+
+if [ -e ~/.vidulum-params/sapling-spend.params ]
+then
+echo "Sapling-spend params already present!"
+else
+echo "Downloading Sapling-spend params"
+
+wget -O .vidulum-params/sapling-spend.params https://downloads.vidulum.app/vidulum/sapling-spend.params
+fi
+
+echo " "
+
+if [ -e ~/.vidulum-params/sapling-output.params ]
+then
+echo "Sapling-output params already present!"
+else
+echo "Downloading Sapling-output params"
+
+wget -O .vidulum-params/sapling-output.params https://downloads.vidulum.app/vidulum/sapling-output.params
+fi
 
 echo " "
 
