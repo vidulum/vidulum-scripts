@@ -18,11 +18,45 @@ echo " "
 echo " "
 echo " "
 echo "I take a nap"
-echo "I take a nap right here for 5 seconds"
-sleep 5
+echo "I take a nap right here for 15 seconds"
+sleep 15
 
 rm vidulumd
 rm vidulum-cli
+
+echo " "
+
+if [ -e ~/.vidulum-params/sprout-groth16.params ]
+then
+echo "Groth 16 Sapling params already present!"
+else
+echo "Downloading Groth16 Sapling params"
+
+wget -O .vidulum-params/sprout-groth16.params https://downloads.vidulum.app/vidulum/sprout-groth16.params
+fi
+
+echo " "
+
+if [ -e ~/.vidulum-params/sapling-spend.params ]
+then
+echo "Sapling-spend params already present!"
+else
+echo "Downloading Sapling-spend params"
+
+wget -O .vidulum-params/sapling-spend.params https://downloads.vidulum.app/vidulum/sapling-spend.params
+fi
+
+echo " "
+
+if [ -e ~/.vidulum-params/sapling-output.params ]
+then
+echo "Sapling-output params already present!"
+else
+echo "Downloading Sapling-output params"
+
+wget -O .vidulum-params/sapling-output.params https://downloads.vidulum.app/vidulum/sapling-output.params
+fi
+
 
 echo " "
 wget -q --show-progress https://github.com/vidulum/vidulum/releases/download/v1.0.1/vidulum-linux64.zip
@@ -46,6 +80,6 @@ echo " "
 echo " "
 
 #Trying too hard
-#echo "The next line should be  protocolversion:  170007"
+#echo "The next line should be  protocolversion:  170008"
 #./vidulum-cli getnetworkinfo | grep -i 'protocolversion'
 echo "Done"
