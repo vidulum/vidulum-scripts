@@ -66,8 +66,13 @@ unzip VDL-Linux.zip
 
 rm VDL-Linux.zip
 
+mv VDL-Linux/vidulum-cli .
+mv VDL-Linux/vidulumd .
+
 chmod u+x vidulum-cli
 chmod u+x vidulumd
+
+rm -r VDL-Linux
 
 ./vidulumd -daemon=1
 
