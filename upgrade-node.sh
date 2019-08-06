@@ -59,17 +59,15 @@ fi
 
 
 echo " "
-wget -q --show-progress https://github.com/vidulum/vidulum/releases/download/v1.0.1/vidulum-linux64.zip
+wget -q --show-progress https://github.com/vidulum/vidulum/releases/download/v2.0.1/VDL-Linux.zip
 
 echo " "
-unzip vidulum-linux64.zip
+unzip VDL-Linux.zip
 
-rm vidulum-linux64.zip
+rm VDL-Linux.zip
 
 chmod u+x vidulum-cli
 chmod u+x vidulumd
-#mv vidulum-release/vidulumd .
-#mv vidulum-release/vidulum-cli .
 
 ./vidulumd -daemon=1
 
