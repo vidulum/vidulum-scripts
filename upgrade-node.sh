@@ -17,8 +17,7 @@ echo " "
 
 echo " "
 echo " "
-echo "I take a nap"
-echo "I take a nap right here for 15 seconds"
+echo "Waiting for 15 seconds while daemon stops"
 sleep 15
 
 rm vidulumd
