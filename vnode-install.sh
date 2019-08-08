@@ -297,14 +297,21 @@ echo "---------------------------------"
 
 else
 
-wget https://github.com/vidulum/vidulum/releases/download/v1.0.1/vidulum-linux64.zip
+echo " "
+wget -q --show-progress https://github.com/vidulum/vidulum/releases/download/v2.0.1/VDL-Linux.zip
 
-unzip vidulum-linux64.zip
+echo " "
+unzip VDL-Linux.zip
 
-rm -rf vidulum-linux64.zip
+rm VDL-Linux.zip
+
+mv VDL-Linux/vidulum-cli .
+mv VDL-Linux/vidulumd .
 
 chmod u+x vidulum-cli
 chmod u+x vidulumd
+
+rm -r VDL-Linux
 
 fi
 
