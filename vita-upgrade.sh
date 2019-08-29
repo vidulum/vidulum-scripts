@@ -6,6 +6,7 @@
 # ./upgrade-node.sh
 
 #Upgrade Node to current release
+sudo apt install unzip
 
 echo " "
 echo " "
