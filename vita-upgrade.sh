@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Download and Run
-# wget https://raw.githubusercontent.com/vidulum/vidulum-scripts/master/upgrade-node.sh
+# wget https://raw.githubusercontent.com/vidulum/vidulum-scripts/master/vita-upgrade.sh
 # chmod u+x upgrade-node.sh
 # ./upgrade-node.sh
 
