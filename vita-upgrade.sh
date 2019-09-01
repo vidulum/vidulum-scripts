@@ -2,8 +2,8 @@
 
 # Download and Run
 # wget https://raw.githubusercontent.com/vidulum/vidulum-scripts/master/vita-upgrade.sh
-# chmod u+x upgrade-node.sh
-# ./upgrade-node.sh
+# chmod u+x vita-upgrade.sh
+# ./vita-upgrade.sh
 
 #Upgrade Node to current release
 sudo apt install unzip
@@ -68,9 +68,11 @@ rm VDL-Linux.zip
 
 mv VDL-Linux/vidulum-cli .
 mv VDL-Linux/vidulumd .
+mv VDL-Linux/vidulum-tx .
 
 chmod u+x vidulum-cli
 chmod u+x vidulumd
+chmod u+x vidulum-tx
 
 rm -r VDL-Linux
 
