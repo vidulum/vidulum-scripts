@@ -34,26 +34,26 @@ if [[ $MN =~ [yY](es)* ]] && [[ $BS =~ [yY](es)* ]]; then
         echo " "
 	echo "Downloading Bootstrap for a V-Node"
         echo " " 
-	wget https://downloads.vidulum.app/vidulum/VDL-vnode_bootstrap.zip
+	wget https://downloads.vidulum.app/vidulum/VDL-bootstrap.zip
 elif [[ $MN =~ [yY](es)* ]] && [[ $BS =~ [nN](o)* ]]; then
         echo " "
 	echo "Not Downloading Bootstrap, moving on with V-Node Configuration"
         echo " "
 elif [[ $MN =~ [nN](o)* ]] && [[ $BS =~ [yY](es)* ]]; then
         echo " "	
-	echo "Downloading Bootstrap for regular node"
+	echo "Downloading Bootstrap for regular node/wallet"
         echo " "
 	wget https://bootstrap.vidulum.app/bstrap/VDL-bootstrap.zip
 else
         echo " "
-	echo "Not Downloading Bootstrap, moving on with the node setup"
+	echo "Not Downloading Bootstrap, moving on with setup"
         echo " "
 fi
 
 echo " "
-echo "-----------------------------------------------------------"
-echo "| We will now install the dependencies to run your node   |"
-echo "-----------------------------------------------------------"
+echo "---------------------------------------------------------"
+echo "| We will now install the dependencies to run your node |"
+echo "---------------------------------------------------------"
 echo " "
 apt-get update
 sudo apt-get -y install \
@@ -67,19 +67,13 @@ echo "   ## Installing bootstrap ##   "
 echo "   ##########################   "
 echo " "
 
-if [ -f ~/VDL-vnode_bootstrap.zip ]; then
+if [ -f ~/VDL-bootstrap.zip ]; then
     echo " "
-	echo "Upacking V-Node Bootstrap"
+	echo "Upacking Bootstrap"
     echo " "
 
-    unzip VDL-vnode_bootstrap.zip
-
-elif [ -f ~/VDL-bootstrap.zip ]; then 
-    echo " "
-    echo "Unpacking bootstrap"         
-    echo " "
-  
     unzip VDL-bootstrap.zip
+
 else
 	echo " "
 	echo "Nothing to upack, moving forward"
@@ -150,10 +144,12 @@ else
     echo "No bootstrap files to install"
 fi
 # 
+
 cd ~
+
 # Cleanup
-if [ -f ~/VDL-vnode_bootstrap.zip ] || [ -f ~/VDL-bootstrap.zip ]; then
-rm -rf VDL-*.zip
+if [ -f ~/VDL-bootstrap.zip ]; then
+rm -rf VDL-bootstrap.zip
 else
     echo "Nothing to cleanup"
 fi
@@ -165,8 +161,8 @@ echo "| exists, if not then it will be created.    |"
 echo "|--------------------------------------------|"
 echo " "
 
-if [ -d ~/.vidulum-params ]
-then
+if [ -d ~/.vidulum-params ]; then
+
 echo "------------------------------------"
 echo "| Params directory already exists! |"
 echo "------------------------------------"
@@ -178,6 +174,7 @@ echo "| Making params directory |"
 echo "---------------------------"
 
 mkdir .vidulum-params
+
 fi
 
 echo " "
@@ -187,8 +184,8 @@ echo "| not they will be downloaded now.    |"
 echo "|-------------------------------------|"
 echo " "
 
-if [ -e ~/.vidulum-params/sprout-proving.key ]
-then
+if [ -e ~/.vidulum-params/sprout-proving.key ]; then
+
 echo "--------------------------------"
 echo "| Proving key already present! |"
 echo "--------------------------------"
@@ -200,12 +197,13 @@ echo "| Downloading sprout-proving.key |"
 echo "----------------------------------"
 
 wget -O .vidulum-params/sprout-proving.key https://downloads.vidulum.app/vidulum/sprout-proving.key 
+
 fi
 
 echo " "
 
-if [ -e ~/.vidulum-params/sprout-verifying.key ]
-then
+if [ -e ~/.vidulum-params/sprout-verifying.key ]; then
+
 echo "----------------------------------"
 echo "| Verifying key already present! |"
 echo "----------------------------------"
@@ -217,44 +215,67 @@ echo "| Downloading sprout-verifying.key |"
 echo "------------------------------------"
 
 wget -O .vidulum-params/sprout-verifying.key https://downloads.vidulum.app/vidulum/sprout-verifying.key
+
 fi
 
 echo " "
 
-if [ -e ~/.vidulum-params/sprout-groth16.params ]
-then
-echo "Groth 16 Sapling params already present!"
+if [ -e ~/.vidulum-params/sprout-groth16.params ]; then
+
+echo "--------------------------------------------"
+echo "| Groth 16 Sapling params already present! |"
+echo "--------------------------------------------"
+
 else
-echo "Downloading Groth16 Sapling params"
+
+echo "--------------------------------------"    
+echo "| Downloading Groth16 Sapling params |"
+echo "--------------------------------------"
 
 wget -O .vidulum-params/sprout-groth16.params https://downloads.vidulum.app/vidulum/sprout-groth16.params
+
 fi
 
 echo " "
 
-if [ -e ~/.vidulum-params/sapling-spend.params ]
-then
-echo "Sapling-spend params already present!"
+if [ -e ~/.vidulum-params/sapling-spend.params ]; then
+
+echo "-----------------------------------------"    
+echo "| Sapling-spend params already present! |"
+echo "-----------------------------------------"
+
 else
-echo "Downloading Sapling-spend params"
+
+echo "------------------------------------"
+echo "| Downloading Sapling-spend params |"
+echo "------------------------------------"
 
 wget -O .vidulum-params/sapling-spend.params https://downloads.vidulum.app/vidulum/sapling-spend.params
+
 fi
 
 echo " "
 
-if [ -e ~/.vidulum-params/sapling-output.params ]
-then
-echo "Sapling-output params already present!"
+if [ -e ~/.vidulum-params/sapling-output.params ]; then
+
+echo "------------------------------------------"    
+echo "| Sapling-output params already present! |"
+echo "------------------------------------------"
+
 else
-echo "Downloading Sapling-output params"
+
+echo "-------------------------------------"    
+echo "| Downloading Sapling-output params |"
+echo "-------------------------------------"
 
 wget -O .vidulum-params/sapling-output.params https://downloads.vidulum.app/vidulum/sapling-output.params
+
 fi
 
 echo " "
 
 if [[ $MN =~ [yY](es)* ]]; then
+    
     configFile=".vidulum/vidulum.conf"
 
     touch $configFile
@@ -277,9 +298,10 @@ elif [[ $MN =~ [nN](o)* ]]; then
 
 	touch $configFile
 
-	echo "daemon=1" >> $configFile
+    echo "txindex=1" >> $configfile
+
 else 
-	echo "Vidulum.conf must be configured properly - stopping script" && exit 1
+	echo "vidulum.conf must be configured properly - stopping script" && exit 1
 fi
 
 echo " "
@@ -289,33 +311,38 @@ echo "| binaries if they are not present. |"
 echo "|-----------------------------------|"
 echo " "
 
-if [ -e vidulumd ] && [ -e vidulum-cli ]
-then
+if [ -e vidulumd ] && [ -e vidulum-cli ] && [ -e vidulum-tx ]; then
+
 echo "---------------------------------"
 echo "| Vidulum is already installed! |"
 echo "---------------------------------"
 
 else
 
-echo " "
+echo "----------------------------------------"
+echo "| Installing latest version of daemon! |"
+echo "----------------------------------------"
+
 wget -q --show-progress https://github.com/vidulum/vidulum/releases/download/v2.0.1/VDL-Linux.zip
 
 echo " "
+
 unzip VDL-Linux.zip
 
 rm VDL-Linux.zip
 
 mv VDL-Linux/vidulum-cli .
 mv VDL-Linux/vidulumd .
+mv VDL-Linux/vidulum-tx .
 
 chmod u+x vidulum-cli
 chmod u+x vidulumd
+chmod u+x vidulum-tx
 
 rm -r VDL-Linux
 
 fi
 
-echo " "
 echo " "
 echo "|------------------------------------------|"
 echo "| Ok, it looks like everything is complete!|"
@@ -332,4 +359,5 @@ echo "| the output will state:                   |"
 echo "| Masternode successfully started          |"
 echo "|------------------------------------------|"
 echo " "
+
 ./vidulumd -daemon
