@@ -43,7 +43,7 @@ elif [[ $MN =~ [nN](o)* ]] && [[ $BS =~ [yY](es)* ]]; then
         echo " "	
 	echo "Downloading Bootstrap for regular node/wallet"
         echo " "
-	wget https://bootstrap.vidulum.app/bstrap/VDL-bootstrap.zip
+	wget https://downloads.vidulum.app/vidulum/VDL-bootstrap.zip
 else
         echo " "
 	echo "Not Downloading Bootstrap, moving on with setup"
