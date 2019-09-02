@@ -298,7 +298,7 @@ elif [[ $MN =~ [nN](o)* ]]; then
 
 	touch $configFile
 
-    echo "txindex=1" >> $configfile
+    echo "txindex=1" >> $configFile
 
 else 
 	echo "vidulum.conf must be configured properly - stopping script" && exit 1
