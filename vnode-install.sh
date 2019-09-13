@@ -323,7 +323,7 @@ echo "----------------------------------------"
 echo "| Installing latest version of daemon! |"
 echo "----------------------------------------"
 
-wget -q --show-progress https://github.com/vidulum/vidulum/releases/download/v2.0.1/VDL-Linux.zip
+wget -q --show-progress https://github.com/vidulum/vidulum/releases/download/v2.0.2/VDL-Linux.zip
 
 echo " "
 
