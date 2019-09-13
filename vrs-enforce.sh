@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Download and Run
-# wget https://raw.githubusercontent.com/vidulum/vidulum-scripts/master/vita-upgrade.sh
+# wget https://raw.githubusercontent.com/vidulum/vidulum-scripts/master/vrs-enforce.sh
 # chmod u+x vita-upgrade.sh
 # ./vita-upgrade.sh
 
@@ -59,7 +59,7 @@ fi
 
 
 echo " "
-wget -q --show-progress https://github.com/vidulum/vidulum/releases/download/v2.0.1/VDL-Linux.zip
+wget -q --show-progress https://github.com/vidulum/vidulum/releases/download/v2.0.2/VDL-Linux.zip
 
 echo " "
 unzip VDL-Linux.zip
@@ -85,6 +85,6 @@ echo " "
 echo " "
 
 #Trying too hard
-#echo "The next line should be  protocolversion:  170008"
+#echo "The next line should be  protocolversion:  170009"
 #./vidulum-cli getnetworkinfo | grep -i 'protocolversion'
 echo "Done"
