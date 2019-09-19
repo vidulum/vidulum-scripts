@@ -2,8 +2,8 @@
 
 # Download and Run
 # wget https://raw.githubusercontent.com/vidulum/vidulum-scripts/master/vrs-enforce.sh
-# chmod u+x vita-upgrade.sh
-# ./vita-upgrade.sh
+# chmod u+x vrs-enforce.sh
+# ./vrs-enforce.sh
 
 #Upgrade Node to current release
 sudo apt install unzip
