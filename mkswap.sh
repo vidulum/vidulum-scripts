@@ -24,6 +24,13 @@ if [[ $SF =~ [yY](es)* ]]; then
     read SIZE	
 fi
 
+if [ $SIZE == "2" ]; then
+SWAP=2048
+elif [ $SIZE == "4" ]; then
+SWAP=4096
+else
+exit 1
+
 echo "Would you like a firewall to be installed? (yes/no)"
 read -i "yes" FW
 
@@ -61,7 +68,7 @@ fi
 
 if [[ ! -e /root/swapfile ]]; then
 
-dd if=/dev/zero of=/swapfile count=${SIZE} bs=1G
+dd if=/dev/zero of=/swapfile count=${SWAP} bs=1M
 
 chmod 600 /swapfile
 
