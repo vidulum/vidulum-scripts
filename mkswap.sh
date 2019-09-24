@@ -61,7 +61,7 @@ fi
 
 if [[ ! -e /root/swapfile ]]; then
 
-dd if=/dev/zero of=/swapfile count=${SIZE} bs=1M
+dd if=/dev/zero of=/swapfile count=${SIZE} bs=1G
 
 chmod 600 /swapfile
 
