@@ -196,7 +196,7 @@ echo "----------------------------------"
 echo "| Downloading sprout-proving.key |"
 echo "----------------------------------"
 
-wget -O .vidulum-params/sprout-proving.key https://downloads.vidulum.app/vidulum/sprout-proving.key 
+wget -O .vidulum-params/sprout-proving.key https://github.com/vidulum/sapling-params/releases/download/sapling/sprout-proving.key
 
 fi
 
@@ -214,7 +214,7 @@ echo "------------------------------------"
 echo "| Downloading sprout-verifying.key |"
 echo "------------------------------------"
 
-wget -O .vidulum-params/sprout-verifying.key https://downloads.vidulum.app/vidulum/sprout-verifying.key
+wget -O .vidulum-params/sprout-verifying.key https://github.com/vidulum/sapling-params/releases/download/sapling/sprout-verifying.key
 
 fi
 
@@ -232,7 +232,7 @@ echo "--------------------------------------"
 echo "| Downloading Groth16 Sapling params |"
 echo "--------------------------------------"
 
-wget -O .vidulum-params/sprout-groth16.params https://downloads.vidulum.app/vidulum/sprout-groth16.params
+wget -O .vidulum-params/sprout-groth16.params https://github.com/vidulum/sapling-params/releases/download/sapling/sprout-groth16.params
 
 fi
 
@@ -250,7 +250,7 @@ echo "------------------------------------"
 echo "| Downloading Sapling-spend params |"
 echo "------------------------------------"
 
-wget -O .vidulum-params/sapling-spend.params https://downloads.vidulum.app/vidulum/sapling-spend.params
+wget -O .vidulum-params/sapling-spend.params https://github.com/vidulum/sapling-params/releases/download/sapling/sapling-spend.params
 
 fi
 
@@ -268,7 +268,7 @@ echo "-------------------------------------"
 echo "| Downloading Sapling-output params |"
 echo "-------------------------------------"
 
-wget -O .vidulum-params/sapling-output.params https://downloads.vidulum.app/vidulum/sapling-output.params
+wget -O .vidulum-params/sapling-output.params https://github.com/vidulum/sapling-params/releases/download/sapling/sapling-output.params
 
 fi
 
