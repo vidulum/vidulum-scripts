@@ -27,28 +27,28 @@ if [[ $MN =~ [yY](es)* ]]; then
     read VPSIP
 fi
 
-echo "Would you like to download a bootstrap? (yes or no)"
-read -i "yes" BS 
+# echo "Would you like to download a bootstrap? (yes or no)"
+# read -i "yes" BS 
 
-if [[ $MN =~ [yY](es)* ]] && [[ $BS =~ [yY](es)* ]]; then
-        echo " "
-	echo "Downloading Bootstrap for a V-Node"
-        echo " " 
-	wget https://downloads.vidulum.app/vidulum/VDL-bootstrap.zip
-elif [[ $MN =~ [yY](es)* ]] && [[ $BS =~ [nN](o)* ]]; then
-        echo " "
-	echo "Not Downloading Bootstrap, moving on with V-Node Configuration"
-        echo " "
-elif [[ $MN =~ [nN](o)* ]] && [[ $BS =~ [yY](es)* ]]; then
-        echo " "	
-	echo "Downloading Bootstrap for regular node/wallet"
-        echo " "
-	wget https://downloads.vidulum.app/vidulum/VDL-bootstrap.zip
-else
-        echo " "
-	echo "Not Downloading Bootstrap, moving on with setup"
-        echo " "
-fi
+# if [[ $MN =~ [yY](es)* ]] && [[ $BS =~ [yY](es)* ]]; then
+#         echo " "
+# 	echo "Downloading Bootstrap for a V-Node"
+#         echo " " 
+# 	wget https://downloads.vidulum.app/vidulum/VDL-bootstrap.zip
+# elif [[ $MN =~ [yY](es)* ]] && [[ $BS =~ [nN](o)* ]]; then
+#         echo " "
+# 	echo "Not Downloading Bootstrap, moving on with V-Node Configuration"
+#         echo " "
+# elif [[ $MN =~ [nN](o)* ]] && [[ $BS =~ [yY](es)* ]]; then
+#         echo " "	
+# 	echo "Downloading Bootstrap for regular node/wallet"
+#         echo " "
+# 	wget https://downloads.vidulum.app/vidulum/VDL-bootstrap.zip
+# else
+#         echo " "
+# 	echo "Not Downloading Bootstrap, moving on with setup"
+#         echo " "
+# fi
 
 echo " "
 echo "---------------------------------------------------------"
@@ -61,24 +61,24 @@ sudo apt-get -y install \
       autoconf libtool ncurses-dev unzip git python python-zmq \
       zlib1g-dev wget bsdmainutils automake curl libgomp1 unzip
 
-echo " "
-echo "   ##########################   "
-echo "   ## Installing bootstrap ##   "
-echo "   ##########################   "
-echo " "
+# echo " "
+# echo "   ##########################   "
+# echo "   ## Installing bootstrap ##   "
+# echo "   ##########################   "
+# echo " "
 
-if [ -f ~/VDL-bootstrap.zip ]; then
-    echo " "
-	echo "Upacking Bootstrap"
-    echo " "
+# if [ -f ~/VDL-bootstrap.zip ]; then
+#     echo " "
+# 	echo "Upacking Bootstrap"
+#     echo " "
 
-    unzip VDL-bootstrap.zip
+#     unzip VDL-bootstrap.zip
 
-else
-	echo " "
-	echo "Nothing to upack, moving forward"
-    echo " "
-fi
+# else
+# 	echo " "
+# 	echo "Nothing to upack, moving forward"
+#     echo " "
+# fi
 
 echo " "
 echo "----------------------------------------------"
@@ -136,23 +136,23 @@ else
 fi
 
 # Move Blocks into data directory
-if [ -d ~/blocks ] && [ -d ~/chainstate ] && [ -e ~/peers.dat ]; then
-mv blocks ~/.vidulum/blocks
-mv chainstate ~/.vidulum/chainstate
-mv peers.dat ~/.vidulum/peers.dat
-else
-    echo "No bootstrap files to install"
-fi
+# if [ -d ~/blocks ] && [ -d ~/chainstate ] && [ -e ~/peers.dat ]; then
+# mv blocks ~/.vidulum/blocks
+# mv chainstate ~/.vidulum/chainstate
+# mv peers.dat ~/.vidulum/peers.dat
+# else
+#     echo "No bootstrap files to install"
+# fi
 # 
 
 cd ~
 
 # Cleanup
-if [ -f ~/VDL-bootstrap.zip ]; then
-rm -rf VDL-bootstrap.zip
-else
-    echo "Nothing to cleanup"
-fi
+# if [ -f ~/VDL-bootstrap.zip ]; then
+# rm -rf VDL-bootstrap.zip
+# else
+#     echo "Nothing to cleanup"
+# fi
 #
 echo " "
 echo "|--------------------------------------------|"
