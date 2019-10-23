@@ -60,16 +60,14 @@ echo "   ##########################   "
 echo " "
 
 if [ -f ~/bootstrap.zip ]; then
-    echo " "
-	echo "Upacking Bootstrap"
-    echo " "
-
-    unzip bootstrap.zip
-
+  echo " "
+  echo "Upacking Bootstrap"
+  echo " "
+  unzip bootstrap.zip
 else
-	echo " "
-	echo "Nothing to upack, moving forward"
-    echo " "
+  echo " "
+  echo "Nothing to upack, moving forward"
+  echo " "
 fi
 
 echo " "
@@ -85,21 +83,24 @@ echo "| wallet.dat, vidulum.conf, masternode.conf  |"
 echo "----------------------------------------------"
 echo " "
 
-if [ -d ~/.vidulum/blocks ]; then
-    rm -r .vidulum/blocks
-fi
-if [ -d ~/.vidulum/chainstate ]; then
-    rm -r .vidulum/chainstate
+if [ -d ~/.vidulum ]; then
+    if [ -d ~/.vidulum/blocks ]; then
+      rm -r .vidulum/blocks
+    fi
+    if [ -d ~/.vidulum/chainstate ]; then
+      rm -r .vidulum/chainstate
+    fi
+else
+  mkdir .vidulum
 fi
 
-Move Blocks into data directory
+#Move Blocks into data directory
 if [ -d ~/bootstrap/blocks ] && [ -d ~/bootstrap/chainstate ]; then
-mv bootstrap/blocks ~/.vidulum/blocks
-mv bootstrap/chainstate ~/.vidulum/chainstate
+  mv bootstrap/blocks ~/.vidulum/blocks
+  mv bootstrap/chainstate ~/.vidulum/chainstate
 else
     echo "No bootstrap files to install"
 fi
-
 
 cd ~
 
@@ -121,17 +122,17 @@ echo " "
 
 if [ -d ~/.vidulum-params ]; then
 
-echo "------------------------------------"
-echo "| Params directory already exists! |"
-echo "------------------------------------"
+  echo "------------------------------------"
+  echo "| Params directory already exists! |"
+  echo "------------------------------------"
 
 else
 
-echo "---------------------------"
-echo "| Making params directory |"
-echo "---------------------------"
+  echo "---------------------------"
+  echo "| Making params directory |"
+  echo "---------------------------"
 
-mkdir .vidulum-params
+  mkdir .vidulum-params
 
 fi
 
