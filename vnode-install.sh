@@ -27,28 +27,19 @@ if [[ $MN =~ [yY](es)* ]]; then
     read VPSIP
 fi
 
-# echo "Would you like to download a bootstrap? (yes or no)"
-# read -i "yes" BS 
+echo "Would you like to download a bootstrap? (yes or no)"
+read -i "yes" BS 
 
-# if [[ $MN =~ [yY](es)* ]] && [[ $BS =~ [yY](es)* ]]; then
-#         echo " "
-# 	echo "Downloading Bootstrap for a V-Node"
-#         echo " " 
-# 	wget https://downloads.vidulum.app/vidulum/VDL-bootstrap.zip
-# elif [[ $MN =~ [yY](es)* ]] && [[ $BS =~ [nN](o)* ]]; then
-#         echo " "
-# 	echo "Not Downloading Bootstrap, moving on with V-Node Configuration"
-#         echo " "
-# elif [[ $MN =~ [nN](o)* ]] && [[ $BS =~ [yY](es)* ]]; then
-#         echo " "	
-# 	echo "Downloading Bootstrap for regular node/wallet"
-#         echo " "
-# 	wget https://downloads.vidulum.app/vidulum/VDL-bootstrap.zip
-# else
-#         echo " "
-# 	echo "Not Downloading Bootstrap, moving on with setup"
-#         echo " "
-# fi
+if [[ $BS =~ [yY](es)* ]]; then
+        echo " "
+	echo "Downloading Bootstrap for a V-Node"
+        echo " " 
+	wget http://149.28.52.183:8080/get/fqxZc/bootstrap.zip
+else
+        echo " "
+	echo "Not Downloading Bootstrap, moving on to next step"
+        echo " "
+fi
 
 echo " "
 echo "---------------------------------------------------------"
@@ -61,24 +52,24 @@ sudo apt-get -y install \
       autoconf libtool ncurses-dev unzip git python python-zmq \
       zlib1g-dev wget bsdmainutils automake curl libgomp1 unzip
 
-# echo " "
-# echo "   ##########################   "
-# echo "   ## Installing bootstrap ##   "
-# echo "   ##########################   "
-# echo " "
+echo " "
+echo "   ##########################   "
+echo "   ## Installing bootstrap ##   "
+echo "   ##########################   "
+echo " "
 
-# if [ -f ~/VDL-bootstrap.zip ]; then
-#     echo " "
-# 	echo "Upacking Bootstrap"
-#     echo " "
+if [ -f ~/bootstrap.zip ]; then
+    echo " "
+	echo "Upacking Bootstrap"
+    echo " "
 
-#     unzip VDL-bootstrap.zip
+    unzip bootstrap.zip
 
-# else
-# 	echo " "
-# 	echo "Nothing to upack, moving forward"
-#     echo " "
-# fi
+else
+	echo " "
+	echo "Nothing to upack, moving forward"
+    echo " "
+fi
 
 echo " "
 echo "----------------------------------------------"
@@ -93,67 +84,32 @@ echo "| wallet.dat, vidulum.conf, masternode.conf  |"
 echo "----------------------------------------------"
 echo " "
 
-if [ -e ~/.vidulum/wallet.dat ]; then
-    cp .vidulum/wallet.dat .
- else
-    echo "No wallet.dat file to backup"
+if [ -d ~/.vidulum/blocks ]; then
+    rm -r .vidulum/blocks
 fi
-if [ -e ~/.vidulum/vidulum.conf ]; then
-    cp .vidulum/vidulum.conf .
-else
-    echo "No vidulum.conf file to backup"
-fi
-if [ -e ~/.vidulum/masternode.conf ]; then
-    cp .vidulum/masternode.conf .
-else
-    echo "No masternode.conf file to backup"
-fi
-if [ -d ~/.vidulum ]; then
-    rm -rf .vidulum
+if [ -d ~/.vidulum/chainstate ]; then
+    rm -r .vidulum/chainstate
 fi
 
-mkdir .vidulum
-
-if [ -e ~/wallet.dat ]; then
-    mv wallet.dat .vidulum/wallet.dat
+Move Blocks into data directory
+if [ -d ~/bootstrap/blocks ] && [ -d ~/bootstrap/chainstate ]; then
+mv bootstrap/blocks ~/.vidulum/blocks
+mv bootstrap/chainstate ~/.vidulum/chainstate
 else
-    echo "No wallet.dat to move back"
-fi
-if [ -e ~/vidulum.conf ]; then
-    mv vidulum.conf .vidulum/vidulum.conf
-else
-    echo "No vidulum.conf to move back"
-fi
-if [ -e ~/masternode.conf ]; then
-    mv masternode.conf .vidulum/masternode.conf
-else
-    echo "No masternode.conf to move back"
-fi
-if [ ! -d ~/.vidulum ]; then
-    mkdir .vidulum
-else
-    echo "Data directory is already prepared!"
+    echo "No bootstrap files to install"
 fi
 
-# Move Blocks into data directory
-# if [ -d ~/blocks ] && [ -d ~/chainstate ] && [ -e ~/peers.dat ]; then
-# mv blocks ~/.vidulum/blocks
-# mv chainstate ~/.vidulum/chainstate
-# mv peers.dat ~/.vidulum/peers.dat
-# else
-#     echo "No bootstrap files to install"
-# fi
-# 
 
 cd ~
 
-# Cleanup
-# if [ -f ~/VDL-bootstrap.zip ]; then
-# rm -rf VDL-bootstrap.zip
-# else
-#     echo "Nothing to cleanup"
-# fi
-#
+#Cleanup
+if [ -f ~/bootstrap.zip ]; then
+rm -rf bootstrap.zip
+rm -r bootstrap
+else
+    echo "Nothing to cleanup"
+fi
+
 echo " "
 echo "|--------------------------------------------|"
 echo "| Checking if vidulum-params directory       |"
@@ -294,12 +250,17 @@ if [[ $MN =~ [yY](es)* ]]; then
     echo "masternode=1" >> $configFile
 
 elif [[ $MN =~ [nN](o)* ]]; then
-	configFile=".vidulum/vidulum.conf"
-
-	touch $configFile
+    configFile=".vidulum/vidulum.conf"
+    
+    touch $configFile
 
     echo "txindex=1" >> $configFile
-
+    echo "daemon=1" >> $configFile
+    rpcuser=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
+    echo "rpcuser="$rpcuser >> $configFile
+    rpcpassword=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
+    echo "rpcpassword="$rpcpassword >> $configFile
+    
 else 
 	echo "vidulum.conf must be configured properly - stopping script" && exit 1
 fi
