@@ -105,9 +105,10 @@ cd ~
 #Cleanup
 if [ -f ~/bootstrap.zip ]; then
 rm -rf bootstrap.zip
+fi
+
+if [ -d ~/bootstrap ]; then
 rm -r bootstrap
-else
-    echo "Nothing to cleanup"
 fi
 
 echo " "
