@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 #
 # Download and Run
+# REMOVE ANY EXISTING vnode-install.sh SCRIPTS  ( rm vnode-install.sh )
 # wget https://raw.githubusercontent.com/vidulum/vidulum-scripts/master/vnode-install.sh
 # chmod u+x vnode-install.sh
 # ./vnode-install.sh
