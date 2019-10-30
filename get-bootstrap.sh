@@ -79,7 +79,7 @@ echo "-----------------------------------------"
 echo "| Downloading current Vidulum bootstrap |"
 echo "-----------------------------------------"
 
-curl https://downloads.vidulum.app/vidulum/VDL-bootstrap.tar.gz -o VDL-bootstrap.tar.gz
+wget https://downloads.vidulum.app/bootstrap.zip
 
 
 #Decompress
@@ -89,7 +89,7 @@ echo "-------------------------------------------------------"
 echo "| Pulling all of the needles out of the new hay stack |"
 echo "-------------------------------------------------------"
 
-tar -xzf VDL-bootstrap.tar.gz
+unzip bootstrap.zip
 
 
 #Move everything to the Vidulum datadir
@@ -107,8 +107,8 @@ echo " "
 echo " "
 echo " Removing the hay stack "
 
-rm VDL-bootstrap.tar.gz
-
+rm bootstrap.zip
+rm -r bootstrap
 
 #Run the wallet and allow it to finish sync
 echo " "
