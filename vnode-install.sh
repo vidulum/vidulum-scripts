@@ -35,7 +35,7 @@ if [[ $BS =~ [yY](es)* ]]; then
         echo " "
 	echo "Downloading Bootstrap for a V-Node"
         echo " " 
-	wget http://149.28.52.183:8080/get/fqxZc/bootstrap.zip
+	wget https://downloads.vidulum.app/bootstrap.zip
 else
         echo " "
 	echo "Not Downloading Bootstrap, moving on to next step"
