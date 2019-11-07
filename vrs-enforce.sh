@@ -32,7 +32,7 @@ echo "Groth 16 Sapling params already present!"
 else
 echo "Downloading Groth16 Sapling params"
 
-wget -O .vidulum-params/sprout-groth16.params https://downloads.vidulum.app/vidulum/sprout-groth16.params
+wget -O .vidulum-params/sprout-groth16.params https://github.com/vidulum/sapling-params/releases/download/sapling/sprout-groth16.params
 fi
 
 echo " "
@@ -43,7 +43,7 @@ echo "Sapling-spend params already present!"
 else
 echo "Downloading Sapling-spend params"
 
-wget -O .vidulum-params/sapling-spend.params https://downloads.vidulum.app/vidulum/sapling-spend.params
+wget -O .vidulum-params/sapling-spend.params https://github.com/vidulum/sapling-params/releases/download/sapling/sapling-spend.params
 fi
 
 echo " "
@@ -54,7 +54,7 @@ echo "Sapling-output params already present!"
 else
 echo "Downloading Sapling-output params"
 
-wget -O .vidulum-params/sapling-output.params https://downloads.vidulum.app/vidulum/sapling-output.params
+wget -O .vidulum-params/sapling-output.params https://github.com/vidulum/sapling-params/releases/download/sapling/sapling-output.params
 fi
 
 
