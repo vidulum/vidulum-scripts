@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
 #
 # Download and Run
-# REMOVE ANY EXISTING vnode-install.sh SCRIPTS  ( rm vnode-install.sh )
-# wget https://raw.githubusercontent.com/vidulum/vidulum-scripts/master/vnode-install.sh
-# chmod u+x vnode-install.sh
-# ./vnode-install.sh
+# REMOVE ANY EXISTING vnode-install-2.X.X.sh SCRIPTS  ( rm vnode-install-2.X.X.sh )
+# wget https://raw.githubusercontent.com/vidulum/vidulum-scripts/master/vnode-install-2.1.0.sh
+# chmod u+x vnode-install-2.1.0.sh
+# ./vnode-install-2.1.0.sh
 #
 echo " "
-echo "    #################################   "
-echo "    ## Vidulum Node Install Script ##   "
-echo "    #################################   "
+echo "    ##################################   "
+echo "    ## Vidulum 2.1.0 Install Script ##   "
+echo "    ##################################   "
 echo " "
 echo "-------------------------------------------"
 echo "| We will help you setup your V-Node      |"
@@ -247,6 +247,9 @@ if [[ $MN =~ [yY](es)* ]]; then
     echo "server=1" >> $configFile
     echo "txindex=1" >> $configFile
     echo "daemon=1" >> $configFile
+    echo "addnode=207.148.8.58" >> $configFile
+    echo "addnode=54.39.23.85" >> $configFile
+    echo "addnode=51.79.86.4" >> $configFile
     echo "masternodeaddr="$VPSIP":7676" >> $configFile
     echo "externalip="$VPSIP":7676" >> $configFile
     echo "masternodeprivkey="$GENKEY >> $configFile
@@ -263,6 +266,9 @@ elif [[ $MN =~ [nN](o)* ]]; then
     echo "rpcuser="$rpcuser >> $configFile
     rpcpassword=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
     echo "rpcpassword="$rpcpassword >> $configFile
+    echo "addnode=207.148.8.58" >> $configFile
+    echo "addnode=54.39.23.85" >> $configFile
+    echo "addnode=51.79.86.4" >> $configFile
     
 else 
 	echo "vidulum.conf must be configured properly - stopping script" && exit 1
@@ -287,7 +293,7 @@ echo "----------------------------------------"
 echo "| Installing latest version of daemon! |"
 echo "----------------------------------------"
 
-wget -q --show-progress https://github.com/vidulum/vidulum/releases/download/v2.0.2/VDL-Linux.zip
+wget -q --show-progress https://github.com/vidulum/vidulum/releases/download/v2.1.0/VDL-Linux.zip
 
 echo " "
 
