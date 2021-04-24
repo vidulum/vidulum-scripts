@@ -1,16 +1,16 @@
 #!/bin/bash
 
 # Download and Run
-# wget https://raw.githubusercontent.com/vidulum/vidulum-scripts/master/upgrade-2.2.0.sh
-# chmod u+x upgrade-2.2.0.sh
-# ./upgrade-2.2.0.sh
+# wget https://raw.githubusercontent.com/vidulum/vidulum-scripts/master/upgrade-2.2.1.sh
+# chmod u+x upgrade-2.2.1.sh
+# ./upgrade-2.2.1.sh
 
 #Upgrade Node to current release
 sudo apt install unzip
 
 echo " "
 echo " "
-echo "Upgrading to Vidulum 2.2.0"
+echo "Upgrading to Vidulum 2.2.1"
 
 echo " "
 ./vidulum-cli stop
@@ -30,7 +30,7 @@ echo "Removed old VDL-Linux.zip"
 fi
 
 echo " "
-wget -q --show-progress https://github.com/vidulum/vidulum/releases/download/v2.2.0/VDL-Linux.zip
+wget -q --show-progress https://github.com/vidulum/vidulum/releases/download/v2.2.1/VDL-Linux.zip
 
 echo " "
 unzip VDL-Linux.zip
