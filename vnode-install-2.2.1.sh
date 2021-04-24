@@ -2,13 +2,13 @@
 #
 # Download and Run
 # REMOVE ANY EXISTING vnode-install-2.X.X.sh SCRIPTS  ( rm vnode-install-2.X.X.sh )
-# wget https://raw.githubusercontent.com/vidulum/vidulum-scripts/master/vnode-install-2.1.0.sh
-# chmod u+x vnode-install-2.1.0.sh
-# ./vnode-install-2.1.0.sh
+# wget https://raw.githubusercontent.com/vidulum/vidulum-scripts/master/vnode-install-2.2.1.sh
+# chmod u+x vnode-install-2.2.1.sh
+# ./vnode-install-2.2.1.sh
 #
 echo " "
 echo "    ##################################   "
-echo "    ## Vidulum 2.1.0 Install Script ##   "
+echo "    ## Vidulum 2.2.1 Install Script ##   "
 echo "    ##################################   "
 echo " "
 echo "-------------------------------------------"
@@ -293,7 +293,7 @@ echo "----------------------------------------"
 echo "| Installing latest version of daemon! |"
 echo "----------------------------------------"
 
-wget -q --show-progress https://github.com/vidulum/vidulum/releases/download/v2.1.0/VDL-Linux.zip
+wget -q --show-progress https://github.com/vidulum/vidulum/releases/download/2.2.1/VDL-Linux.zip
 
 echo " "
 
