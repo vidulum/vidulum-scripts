@@ -30,7 +30,7 @@ echo "Removed old VDL-Linux.zip"
 fi
 
 echo " "
-wget -q --show-progress https://github.com/vidulum/vidulum/releases/download/v2.2.1/VDL-Linux.zip
+wget -q --show-progress https://github.com/vidulum/vidulum/releases/download/2.2.1/VDL-Linux.zip
 
 echo " "
 unzip VDL-Linux.zip
