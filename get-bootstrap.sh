@@ -54,20 +54,14 @@ if [ -d ~/.vidulum ]
 
 then
 
-cp .vidulum/wallet.dat .
-cp .vidulum/vidulum.conf .
-cp .vidulum/masternode.conf .
-sudo rm -r .vidulum
-mkdir .vidulum
-mv wallet.dat .vidulum/wallet.dat
-mv vidulum.conf .vidulum/vidulum.conf
-mv masternode.conf .vidulum/masternode.conf
+sudo rm -r ~/.vidulum/blocks
+sudo rm -r ~/.vidulum/chainstate
 
 echo " "
 echo " "
-echo "----------------------------------------------"
-echo "| Files deleted while saving conf and wallet |"
-echo "----------------------------------------------"
+echo "----------------------------------------------------------"
+echo "| Blockchain deleted without touching configs and wallet |"
+echo "----------------------------------------------------------"
 
 fi
 
@@ -91,16 +85,14 @@ echo "-------------------------------------------------------"
 
 unzip bootstrap.zip
 
-
 #Move everything to the Vidulum datadir
 echo " "
 echo " "
 echo "----------------------------------------------"
 echo "| Putting new needles into the new hay stack |"
 echo "----------------------------------------------"
-mv bootstrap/blocks ~/.vidulum/blocks
-mv bootstrap/chainstate ~/.vidulum/chainstate
-mv bootstrap/peers.dat ~/.vidulum/peers.dat
+mv blocks ~/.vidulum/blocks
+mv chainstate ~/.vidulum/chainstate
 
 #Clean up
 echo " "
@@ -108,7 +100,6 @@ echo " "
 echo " Removing the hay stack "
 
 rm bootstrap.zip
-rm -r bootstrap
 
 #Run the wallet and allow it to finish sync
 echo " "
