@@ -96,8 +96,8 @@ fi
 
 #Move Blocks into data directory
 if [ -d ~/bootstrap/blocks ] && [ -d ~/bootstrap/chainstate ]; then
-  mv bootstrap/blocks ~/.vidulum/blocks
-  mv bootstrap/chainstate ~/.vidulum/chainstate
+  mv blocks ~/.vidulum/blocks
+  mv chainstate ~/.vidulum/chainstate
 else
     echo "No bootstrap files to install"
 fi
@@ -107,10 +107,6 @@ cd ~
 #Cleanup
 if [ -f ~/bootstrap.zip ]; then
 rm -rf bootstrap.zip
-fi
-
-if [ -d ~/bootstrap ]; then
-rm -r bootstrap
 fi
 
 echo " "
